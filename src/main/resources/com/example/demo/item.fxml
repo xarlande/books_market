@@ -33,7 +33,7 @@
             </HBox>
             <ImageView fx:id="img" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../img/Vasyl_Shkliar_-_Zalyshenez._Chornyi_voron_(palityrka,_2018,_KSD).jpg" />
+                  <Image url="@../../../img/Chornyuvoron.jpg" />
                </image>
             </ImageView>
          </children>

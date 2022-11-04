@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -49,8 +50,8 @@ public class MarketController implements Initializable {
         for (int i = 0; i < 20; i++) {
             book = new Book();
             book.setName("Кобзар");
-            book.setPrice(2.99);
-            book.setImgSrc("/img/kobzar.jpg");
+            book.setPrice(3);
+            book.setImgSrc("/img/Chornyuvoron.jpg");
             book.setColor("6a7324");
             books.add(book);
         }
@@ -79,6 +80,14 @@ public class MarketController implements Initializable {
                 }
 
                 grid.add(anchorPane, column++, row);
+
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
         } catch (IOException e) {
