@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -39,6 +40,7 @@ public class MarketController implements Initializable {
 
 
     private List<Book> books = new ArrayList<>();
+    private Image image;
 
     public MarketController() {
     }
@@ -47,23 +49,48 @@ public class MarketController implements Initializable {
         List<Book> books = new ArrayList<>();
         Book book;
 
-        for (int i = 0; i < 20; i++) {
-            book = new Book();
-            book.setName("Чорний ворон");
-            book.setPrice(3);
-            book.setImgSrc("/img/Chornyuvoron.jpg");
-            book.setColor("6a7324");
-            books.add(book);
-        }
+        book = new Book();
+        book.setName("Чорний ворон");
+        book.setPrice(3);
+        book.setImgSrc("/img/Chornyuvoron.jpg");
+        book.setColor("6a7324");
+        books.add(book);
+
+        book = new Book();
+        book.setName("Чорний ворон");
+        book.setPrice(3);
+        book.setImgSrc("/img/Chornyuvoron.jpg");
+        book.setColor("6a7324");
+        books.add(book);
+
+        book = new Book();
+        book.setName("Чорний ворон");
+        book.setPrice(3);
+        book.setImgSrc("/img/Chornyuvoron.jpg");
+        book.setColor("6a7324");
+        books.add(book);
 
         return books;
+    }
+
+    private void setChosenbook (Book book){
+        bookNameLabel.setText(book.getName());
+        bookPriceLabel.setText(Main.CURRENCY + book.getPrice());
+        image = new Image(getClass().getResourceAsStream(book.getImgSrc()));
+        bookImg.setImage(image);
+        chosenbookCard.setStyle("    -fx-background-color: #"+ book.getColor()+";\n" +
+                "    -fx-background-radius: 30;");
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         books.addAll(getData());
+        if (books.size() > 0){
+            setChosenbook(books.get(0));
+        }
         int column = 0;
-        int row = 0;
+        int row = 1;
         try {
             for (int i = 0; i < books.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
