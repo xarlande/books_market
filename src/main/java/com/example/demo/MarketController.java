@@ -41,6 +41,7 @@ public class MarketController implements Initializable {
 
     private List<Book> books = new ArrayList<>();
     private Image image;
+    private MyListener myListener;
 
     public MarketController() {
     }
@@ -64,9 +65,9 @@ public class MarketController implements Initializable {
         books.add(book);
 
         book = new Book();
-        book.setName("Чорний ворон");
+        book.setName("Кобзар");
         book.setPrice(3);
-        book.setImgSrc("/img/Chornyuvoron.jpg");
+        book.setImgSrc("/img/kobzar.jpg");
         book.setColor("6a7324");
         books.add(book);
 
@@ -88,6 +89,12 @@ public class MarketController implements Initializable {
         books.addAll(getData());
         if (books.size() > 0){
             setChosenbook(books.get(0));
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Book book) {
+                    setChosenbook(book);
+                }
+            };
         }
         int column = 0;
         int row = 1;
@@ -99,7 +106,7 @@ public class MarketController implements Initializable {
 
 
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(books.get(i));
+                itemController.setData(books.get(i),myListener);
 
                 if (column == 3) {
                     column = 0;
