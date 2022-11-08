@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class Book {
+public class Book { // Оголосив публічний клас Book і додав властивості для нього і змінні
     private String name;
     private String imgSrc;
     private double price;

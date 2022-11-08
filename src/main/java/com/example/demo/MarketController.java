@@ -21,32 +21,32 @@ import java.util.ResourceBundle;
 
 public class MarketController implements Initializable {
     @FXML
-    private ImageView bookImg;
+    private ImageView bookImg; // Приватний клас який звязаний з FXML макетом
 
     @FXML
-    private Label bookNameLabel;
+    private Label bookNameLabel; // Приватний клас який звязаний з FXML макетом
 
     @FXML
-    private Label bookPriceLabel;
+    private Label bookPriceLabel; // Приватний клас який звязаний з FXML макетом
 
     @FXML
-    private VBox chosenbookCard;
+    private VBox chosenbookCard; // Приватний клас який звязаний з FXML макетом
 
     @FXML
-    private GridPane grid;
+    private GridPane grid; // Приватний клас який звязаний з FXML макетом
 
     @FXML
-    private ScrollPane scroll;
+    private ScrollPane scroll; // Приватний клас який звязаний з FXML макетом
 
 
-    private List<Book> books = new ArrayList<>();
-    private Image image;
-    private MyListener myListener;
+    private List<Book> books = new ArrayList<>(); // Приватний клас для масиву данних
+    private Image image; // Приватний клас для картинок
+    private MyListener myListener; // Приватний клас для клікера
 
     public MarketController() {
     }
 
-    private List<Book> getData() {
+    private List<Book> getData() { // Массив данних
         List<Book> books = new ArrayList<>();
         Book book;
 
@@ -74,7 +74,7 @@ public class MarketController implements Initializable {
         return books;
     }
 
-    private void setChosenbook (Book book){
+    private void setChosenbook (Book book){ // Приватний клас для зміни головного вікна при нажиманні на обєкти
         bookNameLabel.setText(book.getName());
         bookPriceLabel.setText(Main.CURRENCY + book.getPrice());
         image = new Image(getClass().getResourceAsStream(book.getImgSrc()));
@@ -85,7 +85,7 @@ public class MarketController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) { // Ініціалізація ресурсів і виведення їх на FXML макет
         books.addAll(getData());
         if (books.size() > 0){
             setChosenbook(books.get(0));
