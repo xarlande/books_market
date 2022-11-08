@@ -61,7 +61,7 @@ public class MarketController implements Initializable {
         book.setName("Чорний ворон");
         book.setPrice(3);
         book.setImgSrc("/img/Chornyuvoron.jpg");
-        book.setColor("6a7324");
+        book.setColor("880808");
         books.add(book);
 
         book = new Book();
