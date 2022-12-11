@@ -1,11 +1,11 @@
 package com.example.demo;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+
+import java.util.Objects;
 
 public class ItemController {
 
@@ -20,7 +20,7 @@ public class ItemController {
     private Label priceLabel; // Приватний клас для ціни який звязаний з FXML макетом
 
     @FXML
-    private void click(MouseEvent mouseEvent){
+    private void click(){
         myListener.onClickListener(book);
     } // Приватний клікера для картинки який звязаний з FXML макетом
 
@@ -32,7 +32,7 @@ public class ItemController {
         this.myListener = myListener;
         nameLabel.setText(book.getName());
         priceLabel.setText(Main.CURRENCY + this.book.getPrice());
-        Image image = new Image(getClass().getResourceAsStream(book.getImgSrc()));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(book.getImgSrc())));
         img.setImage(image);
     }
 }

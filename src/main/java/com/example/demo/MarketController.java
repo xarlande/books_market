@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MarketController implements Initializable {
@@ -35,12 +35,8 @@ public class MarketController implements Initializable {
     @FXML
     private GridPane grid; // Приватний клас який звязаний з FXML макетом
 
-    @FXML
-    private ScrollPane scroll; // Приватний клас який звязаний з FXML макетом
 
-
-    private List<Book> books = new ArrayList<>(); // Приватний клас для масиву данних
-    private Image image; // Приватний клас для картинок
+    private final List<Book> books = new ArrayList<>(); // Приватний клас для масиву данних
     private MyListener myListener; // Приватний клас для клікера
 
     public MarketController() {
@@ -107,7 +103,8 @@ public class MarketController implements Initializable {
     private void setChosenbook (Book book){ // Приватний клас для зміни головного вікна при нажиманні на обєкти
         bookNameLabel.setText(book.getName());
         bookPriceLabel.setText(Main.CURRENCY + book.getPrice());
-        image = new Image(getClass().getResourceAsStream(book.getImgSrc()));
+        // Приватний клас для картинок
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(book.getImgSrc())));
         bookImg.setImage(image);
         chosenbookCard.setStyle("    -fx-background-color: #"+ book.getColor()+";\n" +
                 "    -fx-background-radius: 30;");
@@ -119,24 +116,19 @@ public class MarketController implements Initializable {
         books.addAll(getData());
         if (books.size() > 0){
             setChosenbook(books.get(0));
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(Book book) {
-                    setChosenbook(book);
-                }
-            };
+            myListener = this::setChosenbook;
         }
         int column = 0;
         int row = 1;
         try {
-            for (int i = 0; i < books.size(); i++) {
+            for (Book book : books) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("item.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
 
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(books.get(i),myListener);
+                itemController.setData(book, myListener);
 
                 if (column == 3) {
                     column = 0;
