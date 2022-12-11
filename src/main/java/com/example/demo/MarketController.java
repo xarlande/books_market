@@ -51,25 +51,55 @@ public class MarketController implements Initializable {
         Book book;
 
         book = new Book();
-        book.setName("Чорний ворон");
-        book.setPrice(3);
-        book.setImgSrc("/img/Chornyuvoron.jpg");
-        book.setColor("6a7324");
+        book.setName("Бійцівський клуб");
+        book.setPrice(20);
+        book.setImgSrc("/img/fight__club.jpg");
+        book.setColor("613B28");
+        books.add(book);
+
+        book = new Book();
+        book.setName("Останній сеанс");
+        book.setPrice(20);
+        book.setImgSrc("/img/one__book.jpg");
+        book.setColor("433C65");
         books.add(book);
 
         book = new Book();
         book.setName("Чорний ворон");
-        book.setPrice(3);
+        book.setPrice(50);
         book.setImgSrc("/img/Chornyuvoron.jpg");
         book.setColor("880808");
         books.add(book);
 
         book = new Book();
         book.setName("Кобзар");
-        book.setPrice(3);
+        book.setPrice(70);
         book.setImgSrc("/img/kobzar.jpg");
         book.setColor("6a7324");
         books.add(book);
+
+        book = new Book();
+        book.setName("Мене забули на мiсяцi");
+        book.setPrice(20);
+        book.setImgSrc("/img/two__book.jpg");
+        book.setColor("2A4165");
+        books.add(book);
+
+        book = new Book();
+        book.setName("Фактор Черчилля");
+        book.setPrice(20);
+        book.setImgSrc("/img/three__book.jpg");
+        book.setColor("2A4165");
+        books.add(book);
+
+        book = new Book();
+        book.setName("Таємниці Віолети Вейл");
+        book.setPrice(20);
+        book.setImgSrc("/img/four__book.jpg");
+        book.setColor("2A4165");
+        books.add(book);
+
+
 
         return books;
     }
